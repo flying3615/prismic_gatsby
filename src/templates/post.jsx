@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
+import { Disqus } from 'gatsby-plugin-disqus'
 import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header } from '../components'
 import Categories from '../components/Listing/Categories'
 import website from '../../config/website'
@@ -31,6 +32,12 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
   if (data.categories[0].category) {
     categories = data.categories.map(c => c.category.document[0].data.name)
   }
+
+  const disqusConfig = {
+    identifier: data.title.text,
+    title: data.title.text,
+  }
+
   return (
     <Layout customSEO>
       <SEO
@@ -53,6 +60,7 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
         <SliceZone allSlices={data.body} />
         <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
         <Listing posts={posts.nodes} />
+        <Disqus config={disqusConfig} />
       </PostWrapper>
     </Layout>
   )
