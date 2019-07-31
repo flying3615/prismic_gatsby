@@ -1,6 +1,7 @@
 require('dotenv').config({
   path: `.env`,
 })
+const queries = require('./src/components/search/algolia')
 
 const prismicHtmlSerializer = require('./src/gatsby/htmlSerializer')
 
@@ -75,6 +76,16 @@ module.exports = {
         icon: website.favicon,
       },
     },
+    {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
+    'gatsby-plugin-styled-components',
     // Must be placed at the end
     'gatsby-plugin-offline',
     'gatsby-plugin-netlify',

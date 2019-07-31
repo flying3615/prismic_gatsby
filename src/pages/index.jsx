@@ -9,6 +9,7 @@ import Triangle from '../components/Triangle'
 const Hero = styled.header`
   display: flex;
   align-items: center;
+  height: 100vh;
 `
 
 const HeroInner = styled(Wrapper)`
@@ -127,7 +128,7 @@ class Index extends Component {
             </Social>
           </HeroInner>
         </Hero>
-        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem' }}>
+        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '100vh' }}>
           <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
           <Listing posts={posts.nodes} />
           <Title style={{ marginTop: '8rem' }}>Recent projects</Title>

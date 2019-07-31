@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import styled from '@emotion/styled'
+import Search from './search'
 
 const StyledHeader = styled.nav`
   padding-bottom: 2rem;
@@ -22,6 +23,7 @@ class Header extends Component {
         <Link to="/" aria-label="Back to Home">
           Frontend Developer
         </Link>
+        <Search collapse hitsAsGrid />
       </StyledHeader>
     )
   }
