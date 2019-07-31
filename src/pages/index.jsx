@@ -4,9 +4,9 @@ import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import { Layout, Listing, Wrapper, Title } from '../components'
 import website from '../../config/website'
+import Triangle from '../components/Triangle'
 
 const Hero = styled.header`
-  background-color: ${props => props.theme.colors.greyLight};
   display: flex;
   align-items: center;
 `
@@ -94,6 +94,18 @@ const ProjectListing = styled.ul`
 
 const IndexWrapper = Wrapper.withComponent('main')
 
+const HeroBackground = () => (
+  <div>
+    <Triangle color="backgroundDark" height={['35vh', '80vh']} width={['95vw', '60vw']} />
+
+    <Triangle color="secondary" height={['38vh', '80vh']} width={['50vw', '35vw']} />
+
+    <Triangle color="primaryDark" height={['25vh', '35vh']} width={['75vw', '60vw']} invertX />
+
+    <Triangle color="backgroundDark" height={['20vh', '20vh']} width={['100vw', '100vw']} invertX invertY />
+  </div>
+)
+
 class Index extends Component {
   render() {
     const {
@@ -101,6 +113,7 @@ class Index extends Component {
     } = this.props
     return (
       <Layout>
+        <HeroBackground />
         <Hero>
           <HeroInner>
             <h1>{homepage.data.title.text}</h1>

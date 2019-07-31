@@ -8,6 +8,16 @@ const theme = {
     grey: '#595C62',
     greyDark: '#303643',
     greyDarker: '#1c252b',
+
+    background: '#FFFFFF',
+    backgroundDark: '#f0e6f6',
+
+    primaryLight: '#ae66df',
+    primaryDark: '#4b007d',
+
+    secondary: '#ff4081',
+    secondaryLight: '#ff79b0',
+    secondaryDark: '#c60055',
   },
   maxWidth: '1000px',
   maxWidthText: '720px',
