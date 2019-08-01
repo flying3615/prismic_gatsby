@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
-import { Link } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Categories from './Categories'
 
 const Item = styled.li`
@@ -20,7 +20,7 @@ const Headline = styled.p`
   }
 `
 
-const StyledLink = styled(Link)`
+const StyledLink = styled(AniLink)`
   font-size: 2.369rem;
   color: ${props => props.theme.colors.black};
   font-style: normal;
@@ -37,7 +37,23 @@ export default class ListItem extends Component {
         <Headline>
           {node.data.date} — {categories && <Categories categories={categories} />}
         </Headline>
-        <StyledLink to={node.uid}>{node.data.title.text}</StyledLink>
+        <StyledLink
+          cover
+          to={node.uid}
+          direction="left"
+          duration={3}
+          bg="
+            url(https://source.unsplash.com/random)
+            center / cover   /* position / size */
+            no-repeat        /* repeat */
+            fixed            /* attachment */
+            padding-box      /* origin */
+            content-box      /* clip */
+            white            /* color */
+          "
+        >
+          {node.data.title.text}
+        </StyledLink>
       </Item>
     )
   }

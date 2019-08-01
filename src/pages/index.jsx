@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
+import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import { Layout, Listing, Wrapper, Title } from '../components'
 import website from '../../config/website'
 import Triangle from '../components/Triangle'
@@ -122,7 +123,7 @@ class Index extends Component {
             <Social>
               {social.nodes.map((s, index) => (
                 <li data-name={`social-entry-${index}`} key={s.primary.label.text}>
-                  <a href={s.primary.link.url}>{s.primary.label.text}</a>
+                  <AniLink to={s.primary.link.url}>{s.primary.label.text}</AniLink>
                 </li>
               ))}
             </Social>
@@ -135,7 +136,7 @@ class Index extends Component {
           <ProjectListing>
             {projects.nodes.map(project => (
               <li key={project.primary.label.text}>
-                <a href={project.primary.link.url}>{project.primary.label.text}</a>
+                <AniLink to={project.primary.link.url}>{project.primary.label.text}</AniLink>
               </li>
             ))}
           </ProjectListing>
