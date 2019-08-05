@@ -5,10 +5,10 @@ import styled from '@emotion/styled'
 import { Disqus } from 'gatsby-plugin-disqus'
 import { Layout, Listing, Wrapper, SliceZone, Title, SEO, Header } from '../components'
 import Categories from '../components/Listing/Categories'
+
 import website from '../../config/website'
 
 const Hero = styled.header`
-  background-color: ${props => props.theme.colors.greyLight};
   padding-top: 1rem;
   padding-bottom: 4rem;
 `
@@ -49,7 +49,6 @@ const Post = ({ data: { prismicPost, posts }, location }) => {
       />
       <Hero>
         <Wrapper>
-          <Header />
           <Headline>
             {data.date} — {categories && <Categories categories={categories} />}
           </Headline>

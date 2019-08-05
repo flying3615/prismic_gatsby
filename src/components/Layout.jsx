@@ -12,6 +12,8 @@ import Footer from './Footer'
 import SEO from './SEO'
 import SkipNavLink from './SkipNavLink'
 import { theme, reset } from '../styles'
+import Header from './Header'
+import Triangle from '../components/Triangle'
 
 import 'typeface-lora'
 import 'typeface-source-sans-pro'
@@ -71,12 +73,25 @@ const globalStyle = css`
   }
 `
 
+const HeroBackground = () => (
+  <div>
+    <Triangle color="backgroundDark" height={['35vh', '80vh']} width={['95vw', '60vw']} />
+
+    <Triangle color="secondary" height={['38vh', '80vh']} width={['50vw', '35vw']} />
+
+    <Triangle color="primaryDark" height={['25vh', '35vh']} width={['75vw', '60vw']} invertX />
+  </div>
+)
+
 const PureLayout = ({ children, data, customSEO }) => (
   <ThemeProvider theme={theme}>
     <>
       <Global styles={globalStyle} />
       <SkipNavLink />
       {!customSEO && <SEO />}
+      <HeroBackground />
+
+      <Header />
       {children}
       <Footer>
         <div dangerouslySetInnerHTML={{ __html: data.prismicHomepage.data.footer.html }} />

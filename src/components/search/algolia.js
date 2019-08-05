@@ -48,6 +48,7 @@ const postQuery = `query MyQuery {
 }
 `
 
+// TODO defect here...
 const flatten = arr =>
   arr.map(({ node: { slugs, data: { date, body, title, categories } } }) => ({
     date,

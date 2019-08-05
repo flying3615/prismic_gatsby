@@ -15,7 +15,7 @@ require('prismjs/components/prism-graphql')
 const { Elements } = RichText
 
 // Labels with this name will be inline code
-const codeInline = ['text']
+const codeInline = ['text', 'javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
 // Labels with these names will become code blocks
 const codeBlock = ['javascript', 'css', 'scss', 'jsx', 'bash', 'json', 'diff', 'markdown', 'graphql']
 
