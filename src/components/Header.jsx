@@ -5,7 +5,7 @@ import styled from '@emotion/styled'
 import Search from './search'
 
 const StyledHeader = styled.nav`
-  padding-bottom: 2rem;
+  padding-bottom: 3rem;
   a {
     color: ${props => (props.invert ? props.theme.colors.greyLight : props.theme.colors.greyDark)};
     font-weight: 400;
@@ -15,15 +15,18 @@ const StyledHeader = styled.nav`
   }
 `
 
+
 class Header extends Component {
   render() {
     const { invert } = this.props
     return (
       <StyledHeader invert={invert}>
-        <Link to="/" aria-label="Back to Home">
+        <Link to="/" aria-label="Back to Home" style={{ margin: '1rem'}}>
           Frontend Developer
         </Link>
-        <Search collapse hitsAsGrid />
+        <div style={{ float: 'right', background: 'white', margin:'1rem'}}>
+          <Search collapse hitsAsGrid />
+        </div>
       </StyledHeader>
     )
   }

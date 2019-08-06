@@ -7,6 +7,8 @@ import { Layout, Listing, Wrapper, Title } from '../components'
 import website from '../../config/website'
 import Triangle from '../components/Triangle'
 
+
+
 const Hero = styled.header`
   display: flex;
   align-items: center;
@@ -108,6 +110,30 @@ const HeroBackground = () => (
   </div>
 )
 
+const WriteBackground = () => (
+  <div>
+    <Triangle
+      color="secondaryLight"
+      height={['50vh', '20vh']}
+      width={['50vw', '50vw']}
+      invertY
+    />
+
+    <Triangle
+      color="primaryDark"
+      height={['20vh', '40vh']}
+      width={['75vw', '70vw']}
+      invertX
+    />
+
+    <Triangle
+      color="backgroundDark"
+      height={['25vh', '20vh']}
+      width={['100vw', '100vw']}
+    />
+  </div>
+)
+
 class Index extends Component {
   render() {
     const {
@@ -115,7 +141,6 @@ class Index extends Component {
     } = this.props
     return (
       <Layout>
-        <HeroBackground />
         <Hero>
           <HeroInner>
             <h1>{homepage.data.title.text}</h1>
@@ -129,6 +154,7 @@ class Index extends Component {
             </Social>
           </HeroInner>
         </Hero>
+        <WriteBackground />
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '100vh' }}>
           <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
           <Listing posts={posts.nodes} />

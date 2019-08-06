@@ -6,7 +6,6 @@ import { Layout, Listing, Wrapper, Title, SEO, Header } from '../components'
 import website from '../../config/website'
 
 const Hero = styled.header`
-  background-color: ${props => props.theme.colors.primary};
   padding-top: 1rem;
   padding-bottom: 4rem;
   h1 {
