@@ -49,14 +49,33 @@ const postQuery = `query MyQuery {
 `
 
 const flatten = arr =>
-  arr.map(({ node: { slugs, data: { date, body, title, categories } } }) => ({
-    date,
-    text: body[0].primary.text.raw[0].text,
-    quote: body[2].primary.quote.raw[0].text,
-    title: title.raw[0].text,
-    path: slugs[0],
-    categories: categories.map(c => c.category.document[0].data.name),
-  }))
+  arr.map(({ node: { slugs, data: { date, body, title, categories } } }) => {
+    const slices = body
+      .map(b => {
+        const entry = {}
+        if (b.primary) {
+          const type = Object.keys(b.primary)[0]
+          const value = b.primary[type].raw.map(r => r.text).join('')
+          entry[type] = value
+        }
+        return entry
+      })
+      .reduce(
+        (acc, item) => ({
+          ...acc,
+          ...item,
+        }),
+        {}
+      )
+
+    return {
+      date,
+      ...slices,
+      title: title.raw[0].text,
+      path: slugs[0],
+      categories: categories.map(c => c.category.document[0].data.name),
+    }
+  })
 
 const queries = [
   {
