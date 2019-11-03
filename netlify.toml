@@ -1,2 +1,2 @@
-[template.environment]
-  API_KEY = "wocao"
+[build]
+  publish = "project/public"
