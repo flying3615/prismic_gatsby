@@ -1,2 +1,3 @@
 [build]
+  base = "prismic_gatsby"
   publish = "prismic_gatsby/public"
