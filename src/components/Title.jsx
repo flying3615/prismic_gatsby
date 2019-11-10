@@ -11,7 +11,7 @@ const Title = styled.p`
     background-color: ${props => props.theme.colors.grey};
     display: inline-block;
     position: absolute;
-    top: 50%;
+    top: 33%;
     left: -80px;
   }
   @media (max-width: ${props => props.theme.breakpoints.l}) {

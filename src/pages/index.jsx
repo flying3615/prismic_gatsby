@@ -3,9 +3,10 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import { graphql } from 'gatsby'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
-import { Layout, Listing, Wrapper, Title } from '../components'
+import { Layout, PostList, Wrapper, Title } from '../components'
 import website from '../../config/website'
 import Triangle from '../components/Triangle'
+import ProjectList from "../components/Listing/ProjectList";
 
 
 
@@ -37,7 +38,7 @@ const HeroInner = styled(Wrapper)`
 
 const HeroText = styled.div`
   font-family: 'ZCOOL XiaoWei', serif;
-  font-size: 2.0rem;
+  font-size: 1.7rem;
   text-shadow: 0px 0px 3px #000000;
   line-height: 1.4;
   margin-bottom: 2rem;
@@ -76,23 +77,6 @@ const Social = styled.ul`
       }
       @media (max-width: ${props => props.theme.breakpoints.s}) {
         font-size: 1.2rem;
-      }
-    }
-  }
-`
-
-const ProjectListing = styled.ul`
-  list-style-type: none;
-  margin-left: 0;
-  margin-top: 4rem;
-  li {
-    margin-bottom: 1.45rem;
-    a {
-      font-size: 2.369rem;
-      font-style: normal;
-      color: ${props => props.theme.colors.primaryLight};
-      @media (max-width: ${props => props.theme.breakpoints.s}) {
-        font-size: 1.777rem;
       }
     }
   }
@@ -152,15 +136,9 @@ class Index extends Component {
         <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '100vh', marginTop:'25vh' }}>
           <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
           {/*TODO limit size...*/}
-          <Listing posts={posts.nodes} />
+          <PostList posts={posts.nodes} />
           <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
-          <ProjectListing>
-            {projects.nodes.map(project => (
-              <li key={project.primary.label.text}>
-                <AniLink to={project.primary.link.url}>{project.primary.label.text}</AniLink>
-              </li>
-            ))}
-          </ProjectListing>
+          <ProjectList projects={projects.nodes} />
         </IndexWrapper>
       </Layout>
     )

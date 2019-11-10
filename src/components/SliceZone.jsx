@@ -6,7 +6,7 @@ import { prism } from '../styles'
 
 const Content = styled.div`
   ${prism};
-  padding: 6rem 0;
+  padding: 3rem 0;
   p,
   li {
     letter-spacing: -0.003em;

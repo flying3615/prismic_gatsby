@@ -2,7 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import styled from '@emotion/styled'
-import { Layout, Listing, Wrapper, Title, SEO, Header } from '../components'
+import { Layout, PostList, Wrapper, Title, SEO } from '../components'
 import website from '../../config/website'
 
 const Hero = styled.header`
@@ -37,7 +37,6 @@ const Category = ({
     <SEO title={`Category: ${category} | ${website.titleAlt}`} pathname={location.pathname} />
     <Hero>
       <Wrapper>
-        <Header invert />
         <Headline>Category</Headline>
         <h1>{category}</h1>
       </Wrapper>
@@ -46,7 +45,7 @@ const Category = ({
       <Title style={{ marginTop: '4rem' }}>
         {totalCount} {totalCount === 1 ? 'Post' : 'Posts'} {totalCount === 1 ? 'was' : 'were'} tagged with "{category}"
       </Title>
-      <Listing posts={nodes} />
+      <PostList posts={nodes} />
     </CatWrapper>
   </Layout>
 )
