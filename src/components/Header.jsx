@@ -1,43 +1,45 @@
-import React, { Component } from 'react'
+import React, {Component} from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
+import {Link} from 'gatsby'
 import styled from '@emotion/styled'
 import Search from './search'
+import Typography from "@material-ui/core/Typography";
+import makeStyles from "@material-ui/core/styles/makeStyles";
+import AppBar from "@material-ui/core/AppBar";
+import Toolbar from "@material-ui/core/Toolbar";
 
-const StyledHeader = styled.nav`
-  padding-bottom: 3rem;
-  a {
-    color: ${props => (props.invert ? props.theme.colors.greyLight : props.theme.colors.greyDark)};
-    font-weight: 400;
-    font-style: normal;
-    font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-      sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
+const useStyles = makeStyles(theme => ({
+  root: {
+    background: theme.background,
+    flexGrow: 1,
+  },
+  title: {
+    flexGrow: 1,
+  },
+  AppBar: {
+    background: theme.background
   }
-`
+}));
 
 
-class Header extends Component {
-  render() {
-    const { invert } = this.props
-    return (
-      <StyledHeader invert={invert}>
-        <Link to="/" aria-label="Back to Home" style={{ margin: '1rem'}}>
-          Frontend Developer
-        </Link>
-        <div style={{ float: 'right', background: 'white', margin:'1rem'}}>
-          <Search collapse hitsAsGrid />
-        </div>
-      </StyledHeader>
-    )
-  }
-}
 
-export default Header
 
-Header.propTypes = {
-  invert: PropTypes.bool,
-}
+export default function Header() {
 
-Header.defaultProps = {
-  invert: false,
+  const classes = useStyles();
+
+  return (
+    <AppBar position="sticky" className={classes.AppBar}>
+      <Toolbar>
+        <Typography variant="h5" className={classes.title}>
+          <Link to="/" aria-label="Back to Home">
+            Frontend Developer
+          </Link>
+        </Typography>
+
+        <Search collapse hitsAsGrid/>
+      </Toolbar>
+    </AppBar>
+  )
+
 }

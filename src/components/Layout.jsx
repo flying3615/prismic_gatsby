@@ -85,18 +85,18 @@ const HeroBackground = () => (
 
 const PureLayout = ({ children, data, customSEO }) => (
   <ThemeProvider theme={theme}>
-    <>
-      <Global styles={globalStyle} />
+
+    <Global styles={globalStyle} />
       <SkipNavLink />
       {!customSEO && <SEO />}
       <HeroBackground />
 
       <Header />
       {children}
-      <Footer>
+
+    <Footer>
         <div dangerouslySetInnerHTML={{ __html: data.prismicHomepage.data.footer.html }} />
       </Footer>
-    </>
   </ThemeProvider>
 )
 

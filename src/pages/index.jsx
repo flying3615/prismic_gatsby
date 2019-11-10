@@ -36,7 +36,9 @@ const HeroInner = styled(Wrapper)`
 `
 
 const HeroText = styled.div`
-  font-size: 1.7rem;
+  font-family: 'ZCOOL XiaoWei', serif;
+  font-size: 2.0rem;
+  text-shadow: 0px 0px 3px #000000;
   line-height: 1.4;
   margin-bottom: 2rem;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
@@ -88,7 +90,7 @@ const ProjectListing = styled.ul`
     a {
       font-size: 2.369rem;
       font-style: normal;
-      color: ${props => props.theme.colors.black};
+      color: ${props => props.theme.colors.primaryLight};
       @media (max-width: ${props => props.theme.breakpoints.s}) {
         font-size: 1.777rem;
       }
@@ -96,19 +98,11 @@ const ProjectListing = styled.ul`
   }
 `
 
+const SiteTitle = styled.h1`
+  font-family: 'Lakki Reddy', cursive;
+`
+
 const IndexWrapper = Wrapper.withComponent('main')
-
-const HeroBackground = () => (
-  <div>
-    <Triangle color="backgroundDark" height={['35vh', '80vh']} width={['95vw', '60vw']} />
-
-    <Triangle color="secondary" height={['38vh', '80vh']} width={['50vw', '35vw']} />
-
-    <Triangle color="primaryDark" height={['25vh', '35vh']} width={['75vw', '60vw']} invertX />
-
-    <Triangle color="backgroundDark" height={['20vh', '20vh']} width={['100vw', '100vw']} invertX invertY />
-  </div>
-)
 
 const WriteBackground = () => (
   <div>
@@ -143,7 +137,7 @@ class Index extends Component {
       <Layout>
         <Hero>
           <HeroInner>
-            <h1>{homepage.data.title.text}</h1>
+            <SiteTitle>{homepage.data.title.text}</SiteTitle>
             <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
             <Social>
               {social.nodes.map((s, index) => (
@@ -155,8 +149,9 @@ class Index extends Component {
           </HeroInner>
         </Hero>
         <WriteBackground />
-        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '100vh' }}>
+        <IndexWrapper id={website.skipNavId} style={{ paddingTop: '2rem', paddingBottom: '2rem', height: '100vh', marginTop:'25vh' }}>
           <Title style={{ marginTop: '4rem' }}>Recent posts</Title>
+          {/*TODO limit size...*/}
           <Listing posts={posts.nodes} />
           <Title style={{ marginTop: '8rem' }}>Recent projects</Title>
           <ProjectListing>

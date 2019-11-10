@@ -154,6 +154,7 @@ const SEO = ({ title, desc, banner, pathname, article, node }) => {
         {!article && <script type="application/ld+json">{JSON.stringify(schemaOrgWebPage)}</script>}
         {article && <script type="application/ld+json">{JSON.stringify(schemaArticle)}</script>}
         <script type="application/ld+json">{JSON.stringify(breadcrumb)}</script>
+        <link href="https://fonts.googleapis.com/css?family=Courgette|Lakki+Reddy|Ubuntu|ZCOOL+XiaoWei&display=swap" rel="stylesheet"/>
       </Helmet>
       <Facebook
         desc={seo.description}

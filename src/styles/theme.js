@@ -1,4 +1,8 @@
+
 const theme = {
+
+  background: '#3D63AE',
+
   colors: {
     primary: '#3D63AE',
     bg: '#fff',

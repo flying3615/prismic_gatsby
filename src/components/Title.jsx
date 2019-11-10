@@ -1,8 +1,8 @@
 import styled from '@emotion/styled'
 
 const Title = styled.p`
-  font-style: italic;
-  font-size: 1.4444rem;
+  font-family: 'Lakki Reddy', cursive;
+  font-size: 2rem;
   position: relative;
   &:before {
     content: '';
