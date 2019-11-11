@@ -1,4 +1,4 @@
-const { RichText } = require('prismic-dom')
+const { RichText, Link } = require('prismic-dom')
 
 // We don't want to import every PrismJS component - so that's why they're required individually
 const Prism = require('prismjs')
@@ -48,6 +48,28 @@ const htmlSerializer = (type, element, content) => {
         )}</code></pre>`
       }
       return null
+    }
+    case Elements.embed: {
+      return `
+        <div data-oembed="${element.oembed.embed_url}"
+          data-oembed-type="${element.oembed.type}"
+          data-oembed-provider="${element.oembed.provider_name}"
+        >
+          ${element.oembed.html}
+        </div>
+      `
+    }
+    case Elements.image: {
+      const linkUrl = element.linkTo ? Link.url(element.linkTo, module.exports.linkResolver) : null
+      const linkTarget =
+        element.linkTo && element.linkTo.target ? `target="${element.linkTo.target}" rel="noopener"` : ''
+      const wrapperClassList = [element.label || '', 'block-img']
+      const img = `<img src="${element.url}" alt="${element.alt || ''}" copyright="${element.copyright || ''}">`
+      return `
+        <p class="${wrapperClassList.join(' ')}">
+          ${linkUrl ? `<a ${linkTarget} href="${linkUrl}">${img}</a>` : img}
+        </p>
+      `
     }
     default: {
       return null
