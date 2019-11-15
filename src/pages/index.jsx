@@ -7,6 +7,12 @@ import { Layout, PostList, Wrapper, Title } from '../components'
 import website from '../../config/website'
 import Triangle from '../components/Triangle'
 import ProjectList from "../components/Listing/ProjectList";
+import { keyframes } from '@emotion/core'
+
+const bounce = keyframes`
+  0%  { bottom: 0; box-shadow: 0 0 5px rgba(0,0,0,0.5); text-shadow: 0px 0px 3px #000000;}
+  100%{ bottom: 50px; box-shadow: 0 50px 50px rgba(0,0,0,0.1);}
+`
 
 
 
@@ -39,7 +45,7 @@ const HeroInner = styled(Wrapper)`
 const HeroText = styled.div`
   font-family: 'ZCOOL XiaoWei', serif;
   font-size: 1.7rem;
-  text-shadow: 0px 0px 3px #000000;
+  
   line-height: 1.4;
   margin-bottom: 2rem;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
@@ -48,6 +54,7 @@ const HeroText = styled.div`
   @media (max-width: ${props => props.theme.breakpoints.s}) {
     font-size: 1.25rem;
   }
+  animation: ${bounce} 0.8s cubic-bezier(0.1,0.25,0.1,1) 0s infinite alternate both;
 `
 
 const Social = styled.ul`
@@ -92,21 +99,21 @@ const WriteBackground = () => (
   <div>
     <Triangle
       color="secondaryLight"
-      height={['50vh', '20vh']}
+      height={['20vh', '20vh']}
       width={['50vw', '50vw']}
       invertY
     />
 
     <Triangle
       color="primaryDark"
-      height={['20vh', '40vh']}
+      height={['10vh', '40vh']}
       width={['75vw', '70vw']}
       invertX
     />
 
     <Triangle
       color="backgroundDark"
-      height={['25vh', '20vh']}
+      height={['15vh', '20vh']}
       width={['100vw', '100vw']}
     />
   </div>

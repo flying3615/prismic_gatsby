@@ -41,13 +41,17 @@ const htmlSerializer = (type, element, content) => {
       return null
     }
     case Elements.preformatted: {
-      if (codeBlock.includes(element.label)) {
-        return `<pre class="language-${element.label}"><code class="language-${element.label}">${Prism.highlight(
-          element.text,
-          Prism.languages[element.label]
-        )}</code></pre>`
-      }
-      return null
+      console.log(element.text)
+      // if (codeBlock.includes(element.label)) {
+        return `
+        <pre class="language-javascript">
+            <code class="language-javascript">
+              ${Prism.highlight(element.text,Prism.languages.javascript,'javascript')}
+            </code>
+        </pre>
+            `
+      // }
+      // return null
     }
     case Elements.embed: {
       return `
