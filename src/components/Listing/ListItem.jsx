@@ -3,6 +3,7 @@ import PropTypes from 'prop-types'
 import styled from '@emotion/styled'
 import AniLink from 'gatsby-plugin-transition-link/AniLink'
 import Categories from './Categories'
+import bg from '../../../static/bg.jpg'
 
 const Item = styled.li`
   margin-bottom: 1.45rem;
@@ -42,15 +43,15 @@ export default class ListItem extends Component {
           to={node.uid}
           direction="left"
           duration={3}
-          bg="
-            url(https://source.unsplash.com/random)
+          bg={`
+            url(${bg})
             center / cover   /* position / size */
             no-repeat        /* repeat */
             fixed            /* attachment */
             padding-box      /* origin */
             content-box      /* clip */
             white            /* color */
-          "
+          `}
         >
           {node.data.title.text}
         </StyledLink>

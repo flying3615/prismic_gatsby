@@ -6,22 +6,15 @@ import { Layout, PostList, Wrapper, Title, SEO } from '../components'
 import website from '../../config/website'
 
 const Hero = styled.header`
-  padding-top: 1rem;
+  padding-top: 8rem;
   padding-bottom: 4rem;
   h1 {
     color: ${props => props.theme.colors.bg};
   }
 `
 
-const Headline = styled.p`
-  font-family: 'Source Sans Pro', -apple-system, 'BlinkMacSystemFont', 'Segoe UI', 'Roboto', 'Helvetica', 'Arial',
-    sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';
-  color: ${props => props.theme.colors.greyBlue};
-  font-size: 1.25rem;
-  a {
-    font-style: normal;
-    font-weight: normal;
-  }
+const Headline = styled.h1`
+  text-shadow: 0 0 3px #FF0000, 0 0 5px #0000FF; 
 `
 
 const CatWrapper = Wrapper.withComponent('main')
@@ -37,8 +30,7 @@ const Category = ({
     <SEO title={`Category: ${category} | ${website.titleAlt}`} pathname={location.pathname} />
     <Hero>
       <Wrapper>
-        <Headline>Category</Headline>
-        <h1>{category}</h1>
+        <Headline>{category}</Headline>
       </Wrapper>
     </Hero>
     <CatWrapper id={website.skipNavId}>

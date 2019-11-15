@@ -7,14 +7,19 @@ import { Layout, PostList, Wrapper, Title } from '../components'
 import website from '../../config/website'
 import Triangle from '../components/Triangle'
 import ProjectList from "../components/Listing/ProjectList";
+import FavoriteIcon from '@material-ui/icons/Favorite';
+
 import { keyframes } from '@emotion/core'
 
 const bounce = keyframes`
-  0%  { bottom: 0; box-shadow: 0 0 5px rgba(0,0,0,0.5); text-shadow: 0px 0px 3px #000000;}
-  100%{ bottom: 50px; box-shadow: 0 50px 50px rgba(0,0,0,0.1);}
+  0%  { bottom: 0; text-shadow: 0px 0px 5px #000000;}
+  100%{ bottom: 50px;  text-shadow: 0px 50px 50px #000000;}
 `
 
-
+const beating = keyframes`
+  0%   {transform: scale(0.7);}
+  100% {transform: scale(1);}
+`
 
 const Hero = styled.header`
   display: flex;
@@ -45,7 +50,7 @@ const HeroInner = styled(Wrapper)`
 const HeroText = styled.div`
   font-family: 'ZCOOL XiaoWei', serif;
   font-size: 1.7rem;
-  
+  display: inline-block;
   line-height: 1.4;
   margin-bottom: 2rem;
   @media (max-width: ${props => props.theme.breakpoints.m}) {
@@ -93,6 +98,14 @@ const SiteTitle = styled.h1`
   font-family: 'Lakki Reddy', cursive;
 `
 
+const BeatingHeart = styled(FavoriteIcon)`
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+
+  color: red;
+  animation: ${beating} 0.8s cubic-bezier(0.1,0.25,0.1,1) 0s infinite alternate both;
+`
+
 const IndexWrapper = Wrapper.withComponent('main')
 
 const WriteBackground = () => (
@@ -129,6 +142,7 @@ class Index extends Component {
         <Hero>
           <HeroInner>
             <SiteTitle>{homepage.data.title.text}</SiteTitle>
+            <BeatingHeart />
             <HeroText dangerouslySetInnerHTML={{ __html: homepage.data.content.html }} />
             <Social>
               {social.nodes.map((s, index) => (
